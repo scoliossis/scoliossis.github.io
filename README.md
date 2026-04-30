@@ -1,2 +1,2 @@
-# scoliossis.github.io
-dragon warrior pee
+# dragonwarriorp.ee
+Dragon Warrior Pee
