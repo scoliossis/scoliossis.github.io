@@ -1,0 +1,18 @@
+html, body {
+    overflow: hidden;
+}
+.box {
+    position: absolute;
+    user-select: none;
+    touch-action: none;
+    transition: filter 3s ease-out, transform 5s ease-out;
+    filter: brightness(1);
+}
+.box.hovered {
+    transform: rotate(360deg);
+    transition: transform 0s;
+}
+.box.dragged {
+    filter: brightness(0.3);
+    transition: filter 0s;
+}
