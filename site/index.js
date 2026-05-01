@@ -27,47 +27,45 @@ function spawnInRainbowSquares() {
     }
 }
 
-let lastX = null;
-let lastY = null;
-let mouseDown = false;
-const FADE_DELAY_MS = 500;
-const ROTATE_DELAY_MS = 1;
-
-// cause im the fanciest guy around we using |=
-window.addEventListener('pointerdown', (e) => mouseDown |= e.button === 0 && handleHover(e.clientX, e.clientY));
-window.addEventListener('pointerup', (e) => mouseDown &= e.button !== 0);
+let lastX = null; let lastY = null;
 
 window.addEventListener('pointermove', (e) => {
-    if (lastX != null && lastY != null) {
-        const dist = Math.hypot(e.clientX - lastX, e.clientY - lastY);
-        const steps = Math.ceil(dist / 5);
+    const mouseX = Math.floor(e.clientX / window.innerWidth * 100 / BOX_SIZE);
+    // immediately, this looks wrong, but trust! we use the width of the screen for the boxes, so we should also use it for undoing the transform
+    const mouseY = Math.floor(e.clientY / window.innerWidth * 100 / BOX_SIZE);
 
-        for (let i = 0; i <= steps; i++) {
-            handleHover(
-                lastX + (e.clientX - lastX) * (i / steps),
-                lastY + (e.clientY - lastY) * (i / steps)
-            );
+    if (mouseX === lastX && mouseY === lastY) return;
+
+    console.log(mouseX, mouseY, lastX, lastY);
+
+    if (lastX != null && lastY != null) {
+        const steps = Math.hypot(mouseX - lastX, mouseY - lastY);
+        if (steps === 0) return;
+
+        for (let i = 1; i <= steps; i++) {
+            const xAtStep = Math.floor((lastX + (mouseX - lastX) * (i / steps)));
+            const yAtStep = Math.floor((lastY + (mouseY - lastY) * (i / steps)));
+
+            handleHover(xAtStep, yAtStep);
         }
     }
 
-    lastX = e.clientX;
-    lastY = e.clientY;
+    lastX = mouseX;
+    lastY = mouseY;
 });
 
 function handleHover(x, y) {
-    const hoveredElement = document.elementFromPoint(x, y);
+    const boxElements = document.getElementsByClassName('box');
+    const index = (x*GRID_SIZE) + y;
+    if (index >= boxElements.length) return;
 
-    if (hoveredElement == null || !hoveredElement.classList.contains('box')) return false;
+    const hoveredElement = boxElements.item(index);
+    if (hoveredElement == null) return;
 
-    addClassToBox(hoveredElement, mouseDown ? 'dragged' : 'hovered', mouseDown ? FADE_DELAY_MS : ROTATE_DELAY_MS)
+    // makes the box immediately do a 360, then we slowly undo it later!
+    hoveredElement.style.transform = 'rotate(360deg)';
+    hoveredElement.style.transition = 'transform 0s';
 
-    return true;
-}
-
-function addClassToBox(box, className, time) {
-    // the "active" (class? tag? idk the word) makes the box immediately darken
-    box.classList.add(className);
-
-    // how fancy is this! wait a lil while before making the box fade back to normal
-    setTimeout(() => box.classList.remove(className), time);
+    // remove the new transform
+    setTimeout(() => hoveredElement.style.transform = hoveredElement.style.transition = '', 1);
 }

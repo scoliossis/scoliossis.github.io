@@ -1,18 +1,69 @@
 html, body {
     overflow: hidden;
+    /* my fav colour scheme <3 */
+    background: linear-gradient(to bottom, #5BCEFA, #F5A9B8, #FFFFFF, #F5A9B8, #5BCEFA) fixed;
+
+    font-family: 'Roboto', sans-serif;
 }
+
 .box {
     position: absolute;
+    /* stops evil people STEALING my squares by dragging them, they are MINE */
     user-select: none;
     touch-action: none;
-    transition: filter 3s ease-out, transform 5s ease-out;
-    filter: brightness(1);
+    transition: transform 5s ease-out;
 }
-.box.hovered {
-    transform: rotate(360deg);
-    transition: transform 0s;
+
+.aboutme * {
+    text-align: center;
 }
-.box.dragged {
-    filter: brightness(0.3);
-    transition: filter 0s;
+
+.aboutme {
+    position: fixed;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.info-box {
+    width: 466px;
+    height: auto;
+    min-height: 200px;
+
+    padding: 27px;
+    box-sizing: border-box;
+
+    /* rounded + blur + shadow = modern ui!!! this site is so modern and slick!!! */
+    border-radius: 20px;
+    background: rgba(22, 22, 22, 0.3);
+    backdrop-filter: blur(0.2vw);
+    box-shadow: 0 0 67px rgba(11, 11, 11, 0.8);
+
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 13px;
+}
+
+.pfp {
+    position: relative;
+    width: 106px;
+    height: 106px;
+    border-radius: 10%;
+}
+
+.whodat {
+    position: relative;
+    font-size: 32px;
+    margin: 0;
+}
+
+.paragraph {
+    position: relative;
+    font-size: 19px;
+    width: 100%;
+    margin: 0;
 }
