@@ -51,7 +51,7 @@ html, body {
     /* rounded + blur + shadow = modern ui!!! this site is so modern and slick!!! */
     border-radius: 20px;
     background: rgba(22, 22, 22, 0.3);
-    backdrop-filter: blur(0.2vw);
+    backdrop-filter: blur(1vw);
     box-shadow: 0 0 67px rgba(11, 11, 11, 0.8);
 
     display: flex;
