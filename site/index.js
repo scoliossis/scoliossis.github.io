@@ -1,3 +1,4 @@
+/* people disable javascript apparently, blehhhh
 const GRID_SIZE = 50;
 const BOX_SIZE = (1 / GRID_SIZE) * 101;
 
@@ -25,43 +26,4 @@ function spawnInRainbowSquares() {
         }
     }
 }
-
-let lastX = null; let lastY = null;
-
-window.addEventListener('pointermove', (e) => {
-    const boxRelativeSize = Math.max(window.innerWidth, window.innerHeight);
-    const mouseX = Math.floor(e.clientX / boxRelativeSize * 100 / BOX_SIZE);
-    const mouseY = Math.floor(e.clientY / boxRelativeSize * 100 / BOX_SIZE);
-
-    if (mouseX === lastX && mouseY === lastY) return;
-
-    if (lastX != null && lastY != null) {
-        const steps = Math.hypot(mouseX - lastX, mouseY - lastY);
-        if (steps === 0) return;
-
-        for (let i = 1; i <= steps; i++) {
-            const xAtStep = Math.floor((lastX + (mouseX - lastX) * (i / steps)));
-            const yAtStep = Math.floor((lastY + (mouseY - lastY) * (i / steps)));
-            handleHover(xAtStep, yAtStep, (mouseX - lastX) + (mouseY - lastY) <= 0 ? '' : '-');
-        }
-    }
-
-    lastX = mouseX;
-    lastY = mouseY;
-});
-
-function handleHover(x, y, axis) {
-    const boxElements = document.getElementsByClassName('box');
-    const index = (x*GRID_SIZE) + y;
-    if (index >= boxElements.length) return;
-
-    const hoveredElement = boxElements.item(index);
-    if (hoveredElement == null) return;
-
-    // makes the box immediately do a 360, then we slowly undo it later!
-    hoveredElement.style.transform = 'rotate(' + axis + '90deg)';
-    hoveredElement.style.transition = 'transform 0s';
-
-    // remove the new transform
-    setTimeout(() => hoveredElement.style.transform = hoveredElement.style.transition = '', 1);
-}
+ */
