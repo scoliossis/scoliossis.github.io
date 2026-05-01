@@ -16,10 +16,9 @@ function spawnInRainbowSquares() {
             const scaledX = (x / GRID_SIZE) * 100;
             const scaledY = (y / GRID_SIZE) * 100;
 
-            box.style.left = scaledX + "vw";
-            box.style.top = scaledY + "vw";
-            box.style.width = BOX_SIZE + "vw";
-            box.style.height = BOX_SIZE + "vw";
+            box.style.left = "max("+scaledX + "vw, " +scaledX + "vh)";
+            box.style.top = "max("+scaledY + "vw, " +scaledY + "vh)";
+            box.style.width = box.style.height = "max("+BOX_SIZE + "vw, " +BOX_SIZE + "vh)";
 
             box.style.background = getHslColourString(((x + y) / (GRID_SIZE * 2)) * 360);
             document.body.appendChild(box);
@@ -30,9 +29,9 @@ function spawnInRainbowSquares() {
 let lastX = null; let lastY = null;
 
 window.addEventListener('pointermove', (e) => {
-    const mouseX = Math.floor(e.clientX / window.innerWidth * 100 / BOX_SIZE);
-    // immediately, this looks wrong, but trust! we use the width of the screen for the boxes, so we should also use it for undoing the transform
-    const mouseY = Math.floor(e.clientY / window.innerWidth * 100 / BOX_SIZE);
+    const boxRelativeSize = Math.max(window.innerWidth, window.innerHeight);
+    const mouseX = Math.floor(e.clientX / boxRelativeSize * 100 / BOX_SIZE);
+    const mouseY = Math.floor(e.clientY / boxRelativeSize * 100 / BOX_SIZE);
 
     if (mouseX === lastX && mouseY === lastY) return;
 
