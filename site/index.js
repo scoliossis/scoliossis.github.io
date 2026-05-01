@@ -44,8 +44,7 @@ window.addEventListener('pointermove', (e) => {
         for (let i = 1; i <= steps; i++) {
             const xAtStep = Math.floor((lastX + (mouseX - lastX) * (i / steps)));
             const yAtStep = Math.floor((lastY + (mouseY - lastY) * (i / steps)));
-
-            handleHover(xAtStep, yAtStep);
+            handleHover(xAtStep, yAtStep, (mouseX - lastX) + (mouseY - lastY) <= 0 ? '' : '-');
         }
     }
 
@@ -53,7 +52,7 @@ window.addEventListener('pointermove', (e) => {
     lastY = mouseY;
 });
 
-function handleHover(x, y) {
+function handleHover(x, y, axis) {
     const boxElements = document.getElementsByClassName('box');
     const index = (x*GRID_SIZE) + y;
     if (index >= boxElements.length) return;
@@ -62,7 +61,7 @@ function handleHover(x, y) {
     if (hoveredElement == null) return;
 
     // makes the box immediately do a 360, then we slowly undo it later!
-    hoveredElement.style.transform = 'rotate(360deg)';
+    hoveredElement.style.transform = 'rotate(' + axis + '90deg)';
     hoveredElement.style.transition = 'transform 0s';
 
     // remove the new transform

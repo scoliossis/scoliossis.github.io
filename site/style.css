@@ -11,7 +11,7 @@ html, body {
     /* stops evil people STEALING my squares by dragging them, they are MINE */
     user-select: none;
     touch-action: none;
-    transition: transform 5s ease-out;
+    transition: transform 1.5s ease-out;
 }
 
 .aboutme * {
