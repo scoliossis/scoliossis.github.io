@@ -35,8 +35,6 @@ window.addEventListener('pointermove', (e) => {
 
     if (mouseX === lastX && mouseY === lastY) return;
 
-    console.log(mouseX, mouseY, lastX, lastY);
-
     if (lastX != null && lastY != null) {
         const steps = Math.hypot(mouseX - lastX, mouseY - lastY);
         if (steps === 0) return;
