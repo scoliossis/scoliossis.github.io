@@ -1,0 +1,84 @@
+* { box-sizing: border-box; margin: 0; padding: 0; }
+
+body {
+  font-family: sans-serif;
+  text-align: center;
+  background: #111;
+  width: 320px;
+}
+
+/* BOTTOM SCREEN — first in DOM, shown on touch screen on load */
+.bottom-screen {
+  height: 240px;
+  background: #111;
+  display: table;
+  width: 320px;
+}
+
+.bottom-inner {
+  display: table-cell;
+  vertical-align: middle;
+  text-align: center;
+}
+
+.card {
+  display: inline-block;
+  width: 240px;
+  padding: 12px 16px;
+  background: #222;
+  border: 1px solid #555;
+  -webkit-border-radius: 14px;
+  border-radius: 14px;
+}
+
+.pfp {
+  width: 60px;
+  height: 60px;
+  -webkit-border-radius: 10%;
+  border-radius: 10%;
+}
+
+h1 {
+  font-size: 20px;
+  color: #f2f2f2;
+  margin: 6px 0 3px;
+}
+
+.paragraph {
+  font-size: 12px;
+  color: #ccc;
+  margin: 0;
+  line-height: 1.4;
+}
+
+/* TOP SCREEN — second in DOM, shown on upper display */
+.top-screen {
+  height: 240px;
+  width: 320px;
+  /* gradient inline-style fallback if CSS file fails; also declared here */
+  /* no idea if ts is gonna work tbh*/
+  background: #F5A9B8;
+  /* no background-attachment:fixed — breaks on 3DS WebKit */
+  background-image: -webkit-linear-gradient(top, #5BCEFA 0%, #F5A9B8 35%, #FFFFFF 50%, #F5A9B8 65%, #5BCEFA 100%);
+  background-image: linear-gradient(to bottom, #5BCEFA 0%, #F5A9B8 35%, #FFFFFF 50%, #F5A9B8 65%, #5BCEFA 100%);
+  display: table;
+}
+
+.top-inner {
+  display: table-cell;
+  vertical-align: middle;
+  text-align: center;
+}
+
+.site-label {
+  font-size: 24px;
+  font-weight: bold;
+  color: #222;
+  letter-spacing: 1px;
+}
+
+.site-sub {
+  font-size: 12px;
+  color: #444;
+  margin-top: 6px;
+}

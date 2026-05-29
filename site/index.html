@@ -1,5 +1,5 @@
 <!doctype html>
-<html class="no-js" lang="">
+<html lang="en">
 
 <head>
     <meta charset="utf-8">
@@ -31,6 +31,18 @@
             <p class="paragraph">paragraph goes here yipper yapper yipper yapper, hi hello, am i mutted, is this thing on?</p>
         </div>
     </div>
+
+
+    <!--3DS compatibility, checking the user agent and if it matches then we redirect to the 3ds version of the file (located in the /3ds/ folder)-->
+<script>
+(function() {
+  if (navigator.userAgent.indexOf('Nintendo 3DS') !== -1) {
+    var path = window.location.pathname;
+    var file = path.substring(path.lastIndexOf('/') + 1) || 'index.html';
+    window.location.replace('/3ds/' + file);
+  }
+})();
+</script>
 </body>
 
 </html>

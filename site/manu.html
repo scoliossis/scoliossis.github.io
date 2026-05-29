@@ -393,5 +393,15 @@
     <p>pee enjoyer ✌️✌️✌️</p>
 </div>
 <div class="spear">🧑‍🦼‍➡️</div>
+<!--3DS compatibility, checking the user agent and if it matches then we redirect to the 3ds version of the file (located in the /3ds/ folder)-->
+<script>
+(function() {
+  if (navigator.userAgent.indexOf('Nintendo 3DS') !== -1) {
+    window.location.replace('/3ds/manu.html');
+  }
+})();
+</script>
+
+
 </body>
 </html>

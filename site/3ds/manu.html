@@ -1,0 +1,195 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Manu</title>
+  <!--tell manu his icon resolves to a 404
+  absolute intelligence-->
+  <link rel="icon" href="https://www.leagueoflegends.com/static/favicon-0cf29ce019f7cd1b5f8f.ico">
+  <style>
+    /*importing from local files, since an external link might kill it / take forever (the 3ds is weird like that)*/
+    @font-face {
+      font-family: 'Inter';
+      font-weight: 400;
+      src: url('fonts/static/Inter_18pt-Regular.ttf') format('truetype');
+    }
+    @font-face {
+      font-family: 'Inter';
+      font-weight: 800;
+      src: url('fonts/static/Inter_18pt-ExtraBold.ttf') format('truetype');
+    }
+    @font-face {
+      font-family: 'JetBrains Mono';
+      font-weight: 400;
+      src: url('fonts/JetBrainsMono-Regular.ttf') format('truetype');
+    }
+    @font-face {
+      font-family: 'JetBrains Mono';
+      font-weight: 600;
+      src: url('fonts/JetBrainsMono-SemiBold.ttf') format('truetype');
+    }
+
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+
+    /* ===== BODY (GREY BACKGROUND) ===== */
+    body {
+      background: #1b1b1b;
+      font-family: 'Inter', sans-serif;
+      color: #e5e5e5;
+      text-align: center;
+      width: 320px;
+    }
+
+    /* BOTTOM SCREEN — first in DOM */
+    .bottom-screen {
+      height: 240px;
+      background: #1b1b1b;
+      display: table;
+      width: 320px;
+    }
+
+    .bottom-inner {
+      display: table-cell;
+      vertical-align: middle;
+      text-align: center;
+    }
+
+    .card {
+      display: inline-block;
+      width: 240px;
+      padding: 12px 16px;
+      background: #2a2a2a;
+      border: 1px solid #444;
+      -webkit-border-radius: 16px;
+      border-radius: 16px;
+    }
+
+    .pfp-wrap {
+      width: 64px;
+      height: 64px;
+      -webkit-border-radius: 50%;
+      border-radius: 50%;
+      overflow: hidden;
+      display: block;
+      margin: 0 auto 8px;
+      border: 2px solid #555;
+    }
+
+    .pfp-wrap img {
+      width: 64px;
+      height: 64px;
+      display: block;
+    }
+
+    .bio {
+      font-size: 12px;
+      color: #cfcfcf;
+      line-height: 1.5;
+      margin: 0 0 10px;
+    }
+
+    .btn {
+      display: inline-block;
+      padding: 6px 14px;
+      background: #3a3a3a;
+      border: 1px solid #555;
+      -webkit-border-radius: 999px;
+      border-radius: 999px;
+      color: #fff;
+      text-decoration: none;
+      font-size: 12px;
+      font-weight: 600;
+    }
+
+    .marquee-bar {
+      background: #141414;
+      border-top: 1px solid #333;
+      padding: 5px 0;
+      overflow: hidden;
+    }
+
+    .marquee-text {
+      white-space: nowrap;
+      font-family: 'JetBrains Mono', monospace;
+      font-size: 10px;
+      color: #aaa;
+      display: inline-block;
+    }
+
+    /* TOP SCREEN — second in DOM */
+    .top-screen {
+      height: 240px;
+      background: #111;
+      border-top: 1px solid #333;
+      display: table;
+      width: 320px;
+    }
+
+    .top-inner {
+      display: table-cell;
+      vertical-align: middle;
+      text-align: center;
+    }
+
+    .top-name {
+      font-size: 32px;
+      font-weight: 800;
+      color: #f2f2f2;
+      letter-spacing: 1px;
+    }
+
+    .top-tag {
+      font-family: 'JetBrains Mono', monospace;
+      font-size: 11px;
+      color: #a78bfa;
+      border: 1px solid #7c3aed;
+      padding: 3px 8px;
+      -webkit-border-radius: 999px;
+      border-radius: 999px;
+      display: inline-block;
+      margin-top: 8px;
+    }
+
+    .top-title {
+      font-family: 'JetBrains Mono', monospace;
+      font-size: 11px;
+      color: #888;
+      margin-top: 8px;
+    }
+  </style>
+</head>
+<body>
+
+  <!-- TOP SCREEN: name, tag, title -->
+  <div class="top-screen">
+    <div class="top-inner">
+      <div class="top-name">Manu</div>
+      <div class="top-tag">ci.cancel();</div>
+      <div class="top-title">Java Enthusiast &bull; League Enjoyer</div>
+    </div>
+  </div>
+
+  <!-- BOTTOM SCREEN: pfp, bio, button -->
+  <div class="bottom-screen">
+    <div class="bottom-inner">
+      <div class="card">
+        <div class="pfp-wrap">
+          <img src="../images/manu.jpg" alt="Manu">
+        </div>
+        <p class="bio">
+          top notch player<br>
+          hidden challenger<br>
+          Scale's hidden son
+        </p>
+        <a href="https://github.com/Tanklastwagenfahrer" class="btn">Github</a>
+      </div>
+    </div>
+  </div>
+
+  <div class="marquee-bar">
+    <marquee class="marquee-text" behavior="scroll" direction="left" scrollamount="3">pee enjoyer</marquee>
+  </div>
+
+</body>
+</html>
